@@ -63,7 +63,8 @@ input{
   background-color: #fed41a;
 }
 
-input:active{
+input:hover{
+  transition: 1s;
   background-color:  #20323B;
   color: #fed41a;
 }
