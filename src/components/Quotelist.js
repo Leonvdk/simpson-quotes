@@ -4,26 +4,32 @@ import axios from 'axios';
 
 export default class Quotelist extends React.Component {
   state = {
-    quotes: [],
-  }
-
-  
-  getQuotes = () => {
-    axios.get('https://simpsons-quotes-api.herokuapp.com/quotes?count=9')
-    .then(response => this.setState({quotes: response.data}))
+    characters: [],
   }
   
-
   componentDidMount() {
-    this.getQuotes()
+    this.getCharacters()
   }
+  
+  getCharacters = () => (
+    axios.get('https://simpsons-quotes-api.herokuapp.com/quotes?count=9')
+    .then(response => this.setState({characters: response.data}))
+  )
+  
+  handleCharactersOrient = (event) => (
+    axios.get('https://simpsons-quotes-api.herokuapp.com/quotes?count=9')
+   .then(response => this.setState({characters: response.data.filter(character => character.characterDirection == event.target.name)})) 
+  )
+
 
   render() {
     return (
       <div>
-        <input type="submit" placeholder="New Character" value="Click Me!" onClick={this.getQuotes}></input>
+        <input name="Left" type="submit" placeholder="Looking Left" value="Looking Left" onClick={this.handleCharactersOrient}></input>
+        <input type="submit" placeholder="Mix!" value="Mix!" onClick={this.getCharacters}></input>
+        <input name="Right" type="submit" placeholder="Looking right" value="Looking right" onClick={this.handleCharactersOrient}></input>
         <div className='product-list'>
-          {this.state.quotes.map(quote => <Quotecard {...quote}/>)}
+          {this.state.characters.map(character => <Quotecard {...character}/>)}
         </div>
       </div>
       
