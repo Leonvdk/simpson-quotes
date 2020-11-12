@@ -8,12 +8,11 @@ export default class Quotelist extends React.Component {
   }
 
   
-  getQuotes = () => (
+  getQuotes = () => {
     axios.get('https://simpsons-quotes-api.herokuapp.com/quotes')
     .then(response => this.setState({quotes: response.data}))
-  )
+  }
   
-  handleSubmit = (event) => event.preventDefault()
 
   componentDidMount() {
     this.getQuotes()
@@ -22,9 +21,7 @@ export default class Quotelist extends React.Component {
   render() {
     return (
       <div>
-        <form>
-        <input type="submit" placeholder="New Character" value="Click Me!" onSubmit={this.handleSubmit} onClick={this.getQuotes}></input>
-        </form>
+        <input type="submit" placeholder="New Character" value="Click Me!" onClick={this.getQuotes}></input>
         {this.state.quotes.map(quote => <Quotecard {...quote}/>)}
       </div>
       
