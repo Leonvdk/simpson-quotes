@@ -18,7 +18,7 @@ export default class Quotelist extends React.Component {
   
   handleCharactersOrient = (event) => (
     axios.get('https://simpsons-quotes-api.herokuapp.com/quotes?count=9')
-   .then(response => this.setState({characters: response.data.filter(character => character.characterDirection == event.target.name)})) 
+   .then(response => this.setState({characters: response.data.filter(character => character.characterDirection === event.target.name)})) 
   )
 
 
