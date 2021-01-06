@@ -24,7 +24,7 @@ code {
   grid-template-columns: repeat(auto-fit, minmax(384px, 1fr));
   grid-gap: 16px;
   margin-right: auto;
-  justify-content: start;
+  justify-content: center;
 }
 
 
@@ -37,6 +37,7 @@ code {
   background-color: #20323B;
   color: #FFF;
   border-radius: 3px;
+  justify-self: center;
 }
 
 .product-card:hover{

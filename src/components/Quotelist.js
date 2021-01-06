@@ -25,9 +25,9 @@ export default class Quotelist extends React.Component {
   render() {
     return (
       <div>
-        <input name="Left" type="submit" placeholder="Looking Left" value="Looking Left" onClick={this.handleCharactersOrient}></input>
+        <input name="Right" type="submit" placeholder="Looking Left" value="Looking Left" onClick={this.handleCharactersOrient}></input>
         <input type="submit" placeholder="Mix!" value="Mix!" onClick={this.getCharacters}></input>
-        <input name="Right" type="submit" placeholder="Looking right" value="Looking right" onClick={this.handleCharactersOrient}></input>
+        <input name="Left" type="submit" placeholder="Looking right" value="Looking right" onClick={this.handleCharactersOrient}></input>
         <div className='product-list'>
           {this.state.characters.map(character => <Quotecard {...character}/>)}
         </div>
